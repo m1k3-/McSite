@@ -253,6 +253,7 @@ h3 {
 /*----------------Buttons command----------*/
 
 .command_div {
+    height: 24px;
     margin-bottom: 10px;
     float: left;
 }
