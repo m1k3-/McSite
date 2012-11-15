@@ -4,6 +4,7 @@
     float: left;
     left: -15px;
     position: absolute;
+    background-color: rgba(0, 28, 78, 0.56);
 }
 
 #menu a {
