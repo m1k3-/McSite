@@ -130,6 +130,7 @@ class DefaultController extends Controller
                 'time' => "<span class='notice'>Le bouton sera utilisable a partir de " . $time . "</span>",
             );
         }
+
 //------------------------------------Earn Money-------------------------------
         elseif ($type == 2)
         {
