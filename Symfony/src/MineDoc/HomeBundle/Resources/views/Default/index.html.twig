@@ -16,7 +16,7 @@
         <div id="member" class="fleft">
             {% for command in commands %}
                 <div class="command_div">
-                    <a class="command" href="{{ path('send_command', {"name" : command.name, "type" : 1}) }}"><input type="button" class="button_blue {% if command.available != 1 %}inactive{% endif %}" value="{{ command.label }}"/></a>
+                    <a class="command cm_btn" href="{{ path('send_command', {"name" : command.name, "type" : 1}) }}"><input type="button" class="button_blue {% if command.available != 1 %}inactive{% endif %}" value="{{ command.label }}"/></a>
                     <span>
                         {% if command.available != 1 %}
                             <span class="notice">
@@ -31,8 +31,8 @@
         {% if level > 1 %}
             <h3 class="title_donator">Privilèges donateur</h3>
             <div id="donator" class="fleft">
-                <a href="{{ path('send_command', {"name" : "undefined", "type" : 2}) }}" id="earnmoney"><input type="button" class="button_blue {% if earnmoney %}inactive{% endif %}" value="Earn Money"/></a>
-            <span id="earnmoneytime" class="command">
+                <a class="cm_btn" href="{{ path('send_command', {"name" : "undefined", "type" : 2}) }}" id="earnmoney"><input type="button" class="button_blue {% if earnmoney %}inactive{% endif %}" value="Earn Money"/></a>
+            <span id="earnmoneytime">
                 {% if earnmoney %}
                     <span class="notice">
                         Le bouton sera utilisable a partir de {{ earnmoneytime }}
