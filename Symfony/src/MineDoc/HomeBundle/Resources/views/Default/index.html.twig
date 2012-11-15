@@ -31,7 +31,7 @@
         {% if level > 1 %}
             <h3 class="title_donator">Privilèges donateur</h3>
             <div id="donator" class="fleft">
-                <a class="command" href="{{ path('send_command', {"name" : "undefined", "type" : 2}) }}" id="earnmoney"><input type="button" class="button_blue {% if earnmoney %}inactive{% endif %}" value="Earn Money"/></a>
+                <a href="{{ path('send_command', {"name" : "undefined", "type" : 2}) }}" id="earnmoney"><input type="button" class="button_blue {% if earnmoney %}inactive{% endif %}" value="Earn Money"/></a>
             <span id="earnmoneytime" class="command">
                 {% if earnmoney %}
                     <span class="notice">
