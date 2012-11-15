@@ -1,0 +1,77 @@
+input, textarea {
+    border: 1px solid #1996c7;
+    border-radius: 5px;
+    padding-left: 5px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+input[type="submit"], input[type="button"], textarea {
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+}
+
+input:focus {
+    border: 1px solid #1996c7;
+    outline: none;
+    box-shadow: 0 0 5px 1px #1996c7;
+}
+
+input:hover {
+    background-color: #E8F4F9;
+}
+
+#login_div {
+    float: right;
+    width: 15%;
+}
+
+#login_div #login div {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#login_div #login div input {
+    width: 68%;
+    margin-left: 2%;
+}
+
+#register>div {
+    margin-bottom: 10px;
+}
+
+#register label {
+    min-width: 115px;
+    float: left;
+}
+
+#register ul {
+    float: right;
+    list-style: none;
+    position: relative;
+}
+
+#register ul li {
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    background-color: #FF6262;
+    border: 1px solid red;
+    padding: 3px 10px;
+}
+
+#register ul li:before {
+    content: '';
+    background: url('/bundles/minedochome/images/warning.png');
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: -5px;
+    left: -35px;
+}
+
+form.donate {
+    margin-top: 10px;
+}

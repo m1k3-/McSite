@@ -1,0 +1,68 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    Panel
+{% endblock %}
+
+{% block body %}
+    {% if app.session.flashes|length > 0 %}
+    {% endif %}
+    {% if level == 5 %}
+        <a href="{{ path('panel', {'pages' : 15, "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : app.request.attributes.get('search')}) }}" class="button_blue">15</a>
+        <a href="{{ path('panel', {'pages' : 30, "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : app.request.attributes.get('search')}) }}" class="button_blue">30</a>
+        <a href="{{ path('panel', {'pages' : 100, "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : app.request.attributes.get('search')}) }}" class="button_blue">100</a>
+        <form action="{{ path('saveitem') }}" method="post" {{ form_enctype(form_item) }}>
+            {{ form_widget(form_item) }}
+            <input type="submit" class="button_blue" value="Ajouter item"/>
+        </form>
+        <hr/>
+        <div id="user_list">
+            {% for user in users %}
+                <div class="user_div">
+                    <div class="user_id">Id: {{ user.user.id}}</div><a href="{{ path('do', {'type' : 1, 'id' : user.user.id, 'new' : 0}) }}" class="button_blue">Supprimer</a>
+                    <div class="user_id">Login: {{ user.user.login }}</div>
+
+                    <form action="{{ path('do', {'type' : 2, 'id' : user.user.id, 'new' : 0}) }}"
+                          method="post" {{ form_enctype(user.form) }}> {{ form_errors(user.form.login) }} {{ form_widget(user.form.login) }}
+                        <input type="submit" class="button_blue" value="Changer login"/>
+                    </form>
+
+                    <div class="user_id">Prénom: {{ user.user.firstname }}</div>
+                    <div class="user_id">Nom: {{ user.user.name }}</div>
+                    <div class="user_id">Mail: {{ user.user.mail }}</div>
+
+                    <form action="{{ path('do', {'type' : 3, 'id' : user.user.id, 'new' : 0}) }}"
+                          method="post" {{ form_enctype(user.form) }}> {{ form_errors(user.form.mail) }} {{ form_widget(user.form.mail) }}
+                        <input type="submit" class="button_blue" value="Changer mail"/>
+                    </form>
+                    <div class="user_id">Parrain: {{ user.user.parrain }}</div>
+
+                    <form action="{{ path('do', {'type' : 6, 'id' : user.user.id, 'new' : 0}) }}"
+                          method="post" {{ form_enctype(user.form) }}> {{ form_errors(user.form.parrain) }} {{ form_widget(user.form.parrain) }}
+                        <input type="submit" class="button_blue" value="Changer parrain"/>
+                    </form>
+
+                    <div class="user_id">Argent: {{ user.user.money }}</div>
+
+                    <input class="money_val" data-id="{{ user.user.id }}" type="number"/>
+                    <a href="#" class="addmoney button_blue">Ajouter argent</a>
+
+                    <div class="user_id">Niveau d'accès: {{ user.user.level }}</div>
+                    <a href="{{ path('do', {'type' : 4, 'id' : user.user.id, 'new' : 0}) }}" class="button_blue">Sous-fifre</a>
+                    <a href="{{ path('do', {'type' : 4, 'id' : user.user.id, 'new' : 1}) }}" class="button_blue">Membre</a>
+                    <a href="{{ path('do', {'type' : 4, 'id' : user.user.id, 'new' : 2}) }}" class="button_blue">Donateur</a>
+                    <a href="{{ path('do', {'type' : 4, 'id' : user.user.id, 'new' : 3}) }}" class="button_blue">Modérateur</a>
+                    <a href="{{ path('do', {'type' : 4, 'id' : user.user.id, 'new' : 4}) }}" class="button_blue">Autre</a>
+                    <a href="{{ path('do', {'type' : 4, 'id' : user.user.id, 'new' : 5}) }}" class="button_blue">Admin</a>
+                </div>
+                <hr/>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="warning">Vous n'avez pas les droits nécessaires pour accéder au contenu intégral de cette page.</div>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('bundles/minedochome/js/admin.js') }}" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+MineDocModelsBundle:
+    resource: "@MineDocModelsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+MineDocHomeBundle:
+    resource: "@MineDocHomeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+MineDocLayoutBundle:
+    resource: "@MineDocLayoutBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+MineDocChatBundle:
+    resource: "@MineDocChatBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+# Internal routing configuration to handle ESI
+#_internal:
+#   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+#   prefix:   /_internal

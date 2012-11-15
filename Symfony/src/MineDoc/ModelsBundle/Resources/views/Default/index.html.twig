@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+{{parent()}} - Page d'integration
+{% endblock %}
+
+{% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/minedocmodels/css/buttons.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block body %}
+
+<div id="div_button">
+  <span class="button">Accueil</span>
+</div>
+
+{% endblock %}

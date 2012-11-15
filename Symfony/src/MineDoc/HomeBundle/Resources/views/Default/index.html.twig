@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block other %}
+    {% if level > 0 %}
+        <div id="infos">Rang: {{ rank }} / Argent: <span id="money">{{ money }}$</span></div>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if level > 0 %}
+        <h3 class="title_donator">Privilèges membre</h3>
+        <div id="member" class="fleft">
+            {% for command in commands %}
+                <div class="command_div">
+                    <a class="command" href="{{ path('send_command', {"name" : command.name, "type" : 1}) }}"><input type="button" class="button_blue {% if command.available != 1 %}inactive{% endif %}" value="{{ command.label }}"/></a>
+                    <span>
+                        {% if command.available != 1 %}
+                            <span class="notice">
+                                Le bouton sera utilisable a partir de {{ command.time }}
+                            </span>
+                        {% endif %}
+                    </span>
+                </div>
+                <br/>
+            {% endfor %}
+        </div>
+        {% if level > 1 %}
+            <h3 class="title_donator">Privilèges donateur</h3>
+            <div id="donator" class="fleft">
+                <a class="command" href="{{ path('send_command', {"name" : "undefined", "type" : 2}) }}" id="earnmoney"><input type="button" class="button_blue {% if earnmoney %}inactive{% endif %}" value="Earn Money"/></a>
+            <span id="earnmoneytime" class="command">
+                {% if earnmoney %}
+                    <span class="notice">
+                        Le bouton sera utilisable a partir de {{ earnmoneytime }}
+                    </span>
+                {% endif %}
+            </span>
+            </div>
+        {% endif %}
+    {% elseif app.session.get('logged') == 1 %}
+        <div class="warning">Vous n'avez pas les droits nécessaires pour accéder au contenu intégral de cette page.</div>
+    {% else %}
+        <div class="warning">Veuillez vous connecter pour accéder au contenu intégral de cette page.</div>
+    {% endif %}
+        <h3>Infos</h3>
+        <div id="infos" class="fleft">
+            <h4>Adresses serveur:</h4><span class="underline">Serveur survival:</span> docserver.fr <br/><span class="underline">Serveur créatif:</span> docserver.fr:4321<br/><br/>
+            Le site vous permet une interactivité avec les autres joueurs ainsi que le serveur sans être pour autant en jeu, des privilèges sont accordés aux membres les plus fidèles ainsi qu'aux donateurs grâce à la boutique dans laquelle vous pouvez acheter des ressources<br/><br/>
+            <h4>Les dons:</h4> Chaque don vous rapporte 100$ (par tranche de 5€) ainsi que le rang de donateur (pour un don minimum de 5€) ce qui vous donne droit a certains privilèges, entre autre l'accès a un bouton utilisable quotidiennement vous rapportant 5$.
+            <br/><br/>
+            <h4>Le parrainage:</h4> En invitant vos amis a rejoindre le serveur ainsi qu'à s'inscrire sur le site, vous recevrez 10$ pour chaque filleul actif, 50$ pour chaque don effectué par l'un de vos filleuls.
+            <br/>
+        </div>
+        {% endblock %}
+
+        {% block js %}
+            <script src="{{ asset('bundles/minedochome/js/sendcommand.js') }}" type="text/javascript"></script>
+        {% endblock %}

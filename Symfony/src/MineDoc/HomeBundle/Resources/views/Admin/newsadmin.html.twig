@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    Panel
+{% endblock %}
+
+{% block body %}
+    {% if app.session.flashes|length > 0 %}
+    {% endif %}
+    {% if level == 5 %}
+        <form method="post" {{ form_enctype(picform) }}>
+            {{ form_widget(picform) }}
+            {{ form_widget(formtest) }}
+            <input type="submit" class="button_blue" value="test"/>
+        </form>
+    <div class="news">
+        {{ news.title }}
+        <img src="{{ news.picture }}"/>
+        {{ news.content }}
+    </div>
+    {% else %}
+        <div class="warning">Vous n'avez pas les droits nécessaires pour accéder au contenu intégral de cette page.</div>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('bundles/minedochome/js/admin.js') }}" type="text/javascript"></script>
+{% endblock %}

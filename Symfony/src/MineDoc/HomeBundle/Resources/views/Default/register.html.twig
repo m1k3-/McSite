@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    Inscription
+{% endblock %}
+
+{% block body %}
+    <form method="post" novalidate="novalidate" {{ form_enctype(form) }}>
+        <div id="register">
+            <div>{{ form_label(form.login, 'Login (minecraft)') }}{{ form_errors(form.login) }}{{ form_widget(form.login) }}</div>
+            {{ form_rest(form) }}
+        </div>
+        <input type="submit" class="button_blue" value="Demande d'inscription" />
+    </form>
+{% endblock %}

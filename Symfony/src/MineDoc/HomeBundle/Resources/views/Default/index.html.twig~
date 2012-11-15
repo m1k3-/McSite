@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+Doc's Server
+{% endblock %}
+
+{% block body %}
+Page d'accueil
+{% endblock %}

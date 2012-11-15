@@ -1,0 +1,99 @@
+<?php
+/**
+ * Created by JetBrains PhpStorm.
+ * User: Doc
+ * Date: 01/10/12
+ * Time: 22:45
+ * To change this template use File | Settings | File Templates.
+ */
+
+namespace MineDoc\HomeBundle\Lib;
+
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\Validator\Constraints\DateTime;
+use MineDoc\HomeBundle\Entity\User;
+use Symfony\Component\HttpFoundation\Session;
+
+class Mc
+{
+    protected $em;
+
+    public function __construct(EntityManager $em)
+    {
+        $this->em = $em;
+    }
+
+    static public function verifyMail($mail, $key)
+    {
+        return ($key == md5($mail . "cobra's the best") ? 1 : 0);
+    }
+
+    static public function sendMail($to)
+    {
+        $from = "noreply.docserver@gmail.com";
+
+        $Subject = "Inscription Doc's server (MineCraft)";
+
+        $key = md5($to . "cobra's the best");
+
+        $mail_Data = "Salut !\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Tu as demandé une inscription sur le site www.docserver.fr, pour cela vérifie ton mail en cliquant sur ce lien: www.docserver.fr/verify/" . $to  ."/" . $key . "\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Voici quelques règles a connaître avant de jouer sur le serveur:\n";
+        $mail_Data .= "\t\t- Il est interdit de faire du griefing, détruire les créations des autres, voler des ressources ou de tuer quelqu'un sans son bon vouloir.\n";
+        $mail_Data .= "\t\t- Toute tentative de triche ou de vol de compte entraine un bannissement définitif.\n";
+        $mail_Data .= "\t\t- Aucun abus du type tnt / feu ne sera accepté.\n";
+        $mail_Data .= "\t\t- Si un joueur fait ramer le serveur consciemment ou le fait crasher, il sera banni de façon définitive.\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Merci d'attendre la validation humaine de votre compte, il se peut qu'un administrateur vous contacte.\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Bon jeu !\n";
+
+        $headers = 'From: "Doc CoBrA"<noreply.docserver@gmail.com>' . "\n";
+        $headers .= 'Reply-To: noreply.docserver@gmail.com' . "\n";
+        $headers .= 'Content-Type: text/plain; charset="iso-8859-1"' . "\n";
+        $headers .= 'Content-Transfer-Encoding: 8bit';
+
+        mail($to, $Subject, $mail_Data, $headers);
+    }
+
+    static public function CanEarn(User $user)
+    {
+        $now = new \DateTime('now');
+        return ($now < $user->getEmtime()) ? 1 : 0;
+    }
+
+    static public function GetRank($level)
+    {
+        switch ($level) {
+            case -1:
+                $rank = "Mail non validé";
+                break;
+            case 0:
+                $rank = "Sous-fifre";
+                break;
+            case 1:
+                $rank = "Membre";
+                break;
+            case 2:
+                $rank = "Donateur";
+                break;
+            case 3:
+                $rank = "Modérateur";
+                break;
+            case 5:
+                $rank = "Admin";
+                break;
+            default :
+                $rank = "Non défini";
+                break;
+        }
+        return ($rank);
+    }
+
+    static public function Test()
+    {
+        return (42);
+    }
+}

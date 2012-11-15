@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Doc's server - {% block title %}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/minedochome/css/main.css') }}" type="text/css" media="all" />
+</head>
+<body>
+<div id="body">
+    <img id="head_img" class="nomtmb" src="{{ asset('bundles/minedochome/images/head.png') }}">
+    <div class="clear nomtmb"></div>
+    <div id="notices">
+        {% if app.session.flashes|length > 0 %}
+            {% if app.session.getFlash('notice', false) %}
+                <div class="notice">{{ app.session.flash('notice') }}</div>
+            {% endif %}
+            {% if app.session.getFlash('warning', false) %}
+                <div class="warning">{{ app.session.flash('warning') }}</div>
+            {% endif %}
+        {% endif %}
+    </div>
+    <div id="menu">
+        <div class="element">
+            <a href="{{ path('homepage') }}">
+                <div class="bg">Accueil</div>
+            </a>
+        </div>
+        <div class="element">
+            <a href="{{ path('dynmap') }}">
+                <div class="bg">DynMap</div>
+            </a>
+        </div>
+        <div class="element">
+            {% if app.session.get('level') == 5 %}
+            <a href="{{ path('panel', {'pages' : 15, 'orderby' : 'id', 'type' : 'desc', 'search' : "nc"}) }}">
+                <div class="bg">Admin</div>
+                {% elseif app.session.get('level') > 0 %}
+                <a href="">
+                    <div class="bg">Compte</div>
+                    {% else %}
+                    <a href="{{ path('register')}}">
+                        <div class="bg">Inscription</div>
+                        {% endif %}
+                    </a>
+        </div>
+        <div class="element">
+            <a href="{{ path('shop') }}">
+                <div class="bg">Boutique</div>
+            </a>
+        </div>
+        <div class="element">
+            <a href="{{ path('dons') }}">
+                <div class="bg">Dons</div>
+            </a>
+        </div>
+
+        <div class="element size_2">
+            <div class="bg">
+                <a href="#">
+                    <div class="sub_bg">
+                        News
+                    </div>
+                </a>
+                <div class="sub_element">
+                    <a href="#">
+                        <div class="sub_bg">Important</div>
+                    </a>
+                </div>
+                <div class="sub_element">
+                    <a href="#">
+                        <div class="sub_bg">Tout</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="element">
+            <a href="#">
+                <div class="bg">Contact</div>
+            </a>
+        </div>
+    </div>
+    <div class="nomtmb">
+        <div id="welcome">
+            {% if app.session.get('logged') != 1 %}
+                Bienvenue sur le site de CoBrA !
+            {% else %}
+                Bienvenue {{ app.session.get('name') }} !
+            {% endif %}
+        </div>
+        {% block other %}{% endblock %}
+    </div>
+    <div class="fat clear"></div>
+    <div id="login_div">
+        {% if app.session.get('logged') != 1 %}
+            <form action="{{ path('login') }}" method="post" {{ form_enctype(form_login) }} name="login">
+                {{ form_widget(form_login) }}
+                <a href="{{ path('register') }}" class="link button_blue">Inscription</a>
+                <input type="submit" class="button_blue" value="Login">
+            </form>
+        {% else %}
+            <a id="logout" class="button_blue" href="{{ path('logout') }}">Déconnexion</a>
+        {% endif %}
+    </div>
+
+    <div id="body_content">
+        {% block body %}{% endblock %}
+    </div>
+
+    <div id="chat">
+        {% if app.session.get('level') > 0 %}
+        <a id="link_getchat" href="{{ path('chat_get') }}"></a>
+        <div id="content_chat"></div>
+        <label for="usermsg"></label><textarea name="nothing" id="usermsg" maxlength="255" placeholder="Envoyer un message" id="usermsg"></textarea>
+        <div id="big_chat" class="button_blue">+</div>
+        <a href="{{ path('chat_send') }}" id="submit_chat" class="button_blue">Envoyer</a>
+        {% elseif app.session.get('logged') == 1 %}
+            <div class="info_chat">Attendez la validation de votre compte pour acceder au tchat.</div>
+        {% else %}
+            <div class="info_chat">Veuillez vous connecter pour acceder au tchat.</div>
+        {% endif %}
+    </div>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+{% if app.session.get('logged') == 1 %}
+    <script src="{{ asset('bundles/minedochome/js/chat.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/minedochome/js/jquery.scrollTo-1.4.3.1.js') }}" type="text/javascript"></script>
+{% endif %}
+<script src="{{ asset('bundles/minedochome/js/main.js') }}" type="text/javascript"></script>
+{% block js %}{% endblock %}

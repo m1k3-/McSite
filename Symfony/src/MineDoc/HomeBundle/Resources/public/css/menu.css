@@ -1,0 +1,70 @@
+#menu {
+    width: 100%;
+    text-align:center;
+    float: left;
+    left: -15px;
+    position: absolute;
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
+}
+
+#menu .element {
+    height: 32px;
+    float: left;
+    display: inline;
+    width: 14.28%;
+    overflow: hidden;
+    position: relative;
+    padding: 5px;
+    border-bottom: 1px solid #666;
+    background: -o-radial-gradient(45px 80px, cover, rgba(31, 169, 244, 1) 0%, rgba(0, 28, 78, 1) 100%);
+    background: -webkit-gradient(radial, 50% 100%, 10, 50% 50%, 90, from(rgba(31, 169, 244, 1)), to(rgba(0, 28, 78, 1)));
+    background: -moz-radial-gradient(center 80px 45deg, circle cover, rgba(31, 169, 244, 1) 0%, rgba(0, 28, 78, 1) 100%);
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+#menu .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    background: rgba(94, 178, 255, 0.36);
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+#menu .bg:hover {
+    background: transparent none;
+}
+
+#menu .element .element .sub:last-child {
+	padding-bottom: 0;
+}
+
+#menu .sub_element {
+	opacity: 1;
+	width: 100%;
+	margin-top: 10px;
+	padding-top: 5px;
+	border-top: 1px solid black;
+}
+
+#menu .element.size_2:hover {
+	height: 96px;
+}
+
+#menu .element.size_1:hover {
+	height: 63px;
+}
+
+#menu .element:hover .element .sub {
+	opacity: 1;
+}

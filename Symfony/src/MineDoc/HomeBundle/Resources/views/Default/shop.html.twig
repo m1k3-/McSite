@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    Boutique
+{% endblock %}
+
+{% block other %}
+    {% if level > 0 %}
+        <div id="infos">Rang: {{ rank }} / Argent: <span id="money">{{ money }}$</span></div>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if level > 0 %}
+        <h3>Boutique</h3>
+        <p class="important">Avant tout achat assurez-vous d'être connecté sur le serveur avec le même login ({{ login }}) que sur le site.</p>
+        <div id="items">
+            <div class="tabz">
+                <span class="tab active" data-category="all">Tout</span>
+                <span class="tab" data-category="bloc">Blocs</span>
+                <span class="tab" data-category="ressource">Ressources</span>
+                <span class="tab" data-category="nourriture">Nourriture</span>
+                <span class="tab" data-category="utilitaire">Utilitaires</span>
+                <span class="tab" data-category="autre">Autre</span>
+            </div>
+            {% for item in items %}
+                <div class="item {{ item.category }}">
+                    <span class="element name">{{ item.name }}</span>
+                    <img src="{{ item.picture }}"/>
+                    <span class="element">Prix: <span class="price_value">{{ item.price }}</span>$</span>
+                    <span class="element">Quantité: <input class="price" data-price="{{ item.price }}" type="number" max="64" min="1" value="1"/></span>
+                    <span class="element">{{ item.counter }} "{{ item.name }}" ont été achetés.</span>
+                    <a class="button_blue choice" href="{{ "/buy/" ~ item.id ~ "/1" }}" data-name="{{ item.name }}" data-id="{{ item.id }}">Acheter</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="warning">Vous n'avez pas les droits nécessaires pour accéder au contenu intégral de cette page.</div>
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('bundles/minedochome/js/shop.js') }}" type="text/javascript"></script>
+{% endblock %}
