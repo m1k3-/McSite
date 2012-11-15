@@ -152,7 +152,7 @@ class AdminController extends Controller
             {
                 if ($user->getLevel() == 0 && $new > 0)
                 {
-                    $service->sendSilentCommand("authme register ". $user->getLogin() . " " . $user->getPassword(), $session);
+                    //$service->sendSilentCommand("authme register ". $user->getLogin() . " " . $user->getPassword(), $session);
                     $service->sendCommand("whitelist add ". $user->getLogin(), $session);
                 }
                 else if ($new == 0)

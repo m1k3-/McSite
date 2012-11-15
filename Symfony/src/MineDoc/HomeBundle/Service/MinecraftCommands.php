@@ -14,8 +14,7 @@ class MinecraftCommands {
             $con->PHPcommand("say ".$session->get('name')." vient de faire cette commande: [".$command."] !");
             $con->PHPdisconnect();
         }
-        else
-        {
+        else {
             echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
         }
     }
@@ -42,8 +41,7 @@ class MinecraftCommands {
             $con->PHPcommand($command);
             $con->PHPdisconnect();
         }
-        else
-        {
+        else {
             echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
         }
     }
