@@ -33,6 +33,33 @@ class MinecraftCommands {
         }
     }
 
+    public function sendSilentCommand($command, $session)
+    {
+        if ($session->get('logged') > 0)
+        {
+            $con = new \PHPsend();
+            $con->PHPconnect("localhost","3fdfa535dedb1556","6530");
+            $con->PHPcommand($command);
+            $con->PHPdisconnect();
+        }
+        else
+        {
+            echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
+        }
+    }
+
+    public function sendSilentCommandCrea($command, $session)
+    {
+        if ($session->get('logged') > 0) {
+            $con = new \PHPsend();
+            $con->PHPconnect("localhost", "3fdfa535dedb1557", "6531");
+            $con->PHPcommand($command);
+            $con->PHPdisconnect();
+        } else {
+            echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
+        }
+    }
+
     public function sendCommandBuy($obj, $nbr, $command, $session)
     {
         if ($session->get('logged') > 0)
