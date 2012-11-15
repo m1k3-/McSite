@@ -227,9 +227,16 @@ class DefaultController extends Controller
         $request = $this->get('request');
         $chat = $this->getDoctrine()->getRepository('MineDocHomeBundle:Chat');
 
+        $currentuser = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($session->get('id'));
+        if ($currentuser != null) {
+            $login = $currentuser->getLogin();
+        } else {
+            return new Response();
+        }
+
         if( $request->getMethod() == 'POST' )
         {
-            $chat->postMessage($session->get('name') ,$_POST['message']);
+            $chat->postMessage($login ,$_POST['message']);
         }
         return new Response();
     }
