@@ -30,7 +30,7 @@ class UserRepository extends EntityRepository
             $search = substr($search, 0, -3);
         }
 
-        if ($opt['orderby'] == 'asc' || $opt['orderby'] == 'desc') {
+        if (strcmp($opt['orderby'],'asc') == 0 || strcmp($opt['orderby'],'desc') == 0) {
             $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
         } else {
             $orderby = " ORDER BY u.id DESC";
