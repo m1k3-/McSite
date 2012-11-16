@@ -105,17 +105,9 @@ class AdminController extends Controller
             }
         }
 
-        $fullpath = $this->getDoctrine()->getRepository('MineDocHomeBundle:News')->find(4);
-
-        $news_['title'] = $fullpath->getName();
-        $news_['content'] = $fullpath->getContent();
-        $news_['picture'] = "upload/admin/" . $fullpath->getPicture()->getFile();
-
         return array(
             'username' => $currentuser->getLogin(),
             'level' => $level,
-            'news' => $news_,
-            'fullpath' => $fullpath,
             'picform' => $picture_form->createView(),
             'formtest' => $test_form->createView()
         );

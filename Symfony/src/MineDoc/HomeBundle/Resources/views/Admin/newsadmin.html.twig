@@ -13,11 +13,6 @@
             {{ form_widget(formtest) }}
             <input type="submit" class="button_blue" value="test"/>
         </form>
-    <div class="news">
-        {{ news.title }}
-        <img src="{{ news.picture }}"/>
-        {{ news.content }}
-    </div>
     {% else %}
         <div class="warning">Vous n'avez pas les droits nécessaires pour accéder au contenu intégral de cette page.</div>
     {% endif %}
