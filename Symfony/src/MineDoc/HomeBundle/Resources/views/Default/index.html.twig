@@ -52,7 +52,7 @@
                 <div class="news">
                     <h2>{{ new.name }}</h2>
                     {% if new.picture is defined %}
-                        {{ new.picture.file }}
+                        <img src="{{ new.picture.file }}"/>
                     {% endif %}
                     {{ new.content | raw }}
                 </div>

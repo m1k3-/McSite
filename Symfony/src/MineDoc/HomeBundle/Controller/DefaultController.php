@@ -44,8 +44,6 @@ class DefaultController extends Controller
 
         $news = $this->getDoctrine()->getRepository('MineDocHomeBundle:News')->getLastNews(5);
 
-        print_r(getimagesize("upload/admin/" . $news[0]->getPicture()->getFile()));
-
         foreach ($commands as $command)
         {
             $modiftime = date_modify($command->getLastUse(), $command->getDelay() . 'seconds');

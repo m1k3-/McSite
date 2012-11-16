@@ -97,8 +97,10 @@ class AdminController extends Controller
             if ($test_form->isValid() && $picture_form->isValid()) {
                 $news->setPicture($testpic);
                 $em = $this->getDoctrine()->getEntityManager();
-                if (getimagesize($testpic->getFile())['mime'] != "image/png" && getimagesize($testpic->getFile())['mime'] != "image/jpeg") {
-                    $this->get('session')->setFlash('warning', 'Type d\'image invalide !');
+                $img_infos = getimagesize($testpic->getFile());
+                if (($img_infos['mime'] != "image/png" && $img_infos['mime'] != "image/jpeg")
+                    || $img_infos[0] > 500) {
+                    $this->get('session')->setFlash('warning', 'Image invalide !');
                     return $this->redirect($this->generateUrl('newsadmin'));
                 }
                 $em->persist($testpic);
