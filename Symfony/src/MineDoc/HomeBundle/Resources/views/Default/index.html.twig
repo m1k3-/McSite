@@ -47,13 +47,17 @@
         <div class="warning">Veuillez vous connecter pour accéder au contenu intégral de cette page.</div>
     {% endif %}
         <h3>News</h3>
-        {% for new in news %}
-            <h2>{{ new.name }}</h2>
-            {% if new.picture is defined %}
-                {{ new.picture.file }}
-            {% endif %}
-            {{ new.content }}
-        {% endfor %}
+        <div id="news">
+            {% for new in news %}
+                <div class="news">
+                    <h2>{{ new.name }}</h2>
+                    {% if new.picture is defined %}
+                        {{ new.picture.file }}
+                    {% endif %}
+                    {{ new.content }}
+                </div>
+            {% endfor %}
+        </div>
         <h3>Infos</h3>
         <div id="infos" class="fleft">
             <h4>Adresses serveur:</h4><span class="underline">Serveur survival:</span> docserver.fr <br/><span class="underline">Serveur créatif:</span> docserver.fr:4321<br/><br/>
