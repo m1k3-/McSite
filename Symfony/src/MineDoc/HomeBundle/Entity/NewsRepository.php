@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class NewsRepository extends EntityRepository
 {
+    public function getLastNews($i) {
+        return $this->getEntityManager()
+            ->createQuery('SELECT i FROM MineDocHomeBundle:News i ORDER BY i.id DESC')
+            ->setMaxResults($i)
+            ->getResult();
+    }
 }

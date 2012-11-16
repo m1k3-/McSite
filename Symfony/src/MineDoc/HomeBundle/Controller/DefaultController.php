@@ -42,6 +42,8 @@ class DefaultController extends Controller
         $res_commands = array();
         $command_ = array();
 
+        $news = $this->getDoctrine()->getRepository('MineDocHomeBundle:News')->getLastNews(5);
+
         foreach ($commands as $command)
         {
             $modiftime = date_modify($command->getLastUse(), $command->getDelay() . 'seconds');
@@ -73,6 +75,7 @@ class DefaultController extends Controller
             'earnmoneytime' => $emtime,
             'form_login' => $form_login->createView(),
             'level' => $session->get('level'),
+            'news' => $news,
             'rank' => $rank,
             'money' => $money,
         );
