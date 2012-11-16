@@ -113,6 +113,7 @@
 {% if app.session.get('logged') == 1 %}
     <script src="{{ asset('bundles/minedochome/js/chat.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bundles/minedochome/js/jquery.scrollTo-1.4.3.1.js') }}" type="text/javascript"></script>
+    {{ tinymce_init() }}
 {% endif %}
 <script src="{{ asset('bundles/minedochome/js/main.js') }}" type="text/javascript"></script>
 {% block js %}{% endblock %}
