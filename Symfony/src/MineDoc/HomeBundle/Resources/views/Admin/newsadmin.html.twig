@@ -10,8 +10,9 @@
     {% if level == 5 %}
         <form method="post" {{ form_enctype(picform) }}>
             {{ form_widget(picform) }}
-            {{ form_widget(formtest) }}
-            <input type="submit" class="button_blue" value="test"/>
+            {{ form_widget(form.login, { 'attr': {'class': 'tinymce'} }) }}
+            {{ form_rest(formtest) }}
+            <input type="submit" class="button_blue" value="test" formnovalidate="true"/>
         </form>
     {% else %}
         <div class="warning">Vous n'avez pas les droits nécessaires pour accéder au contenu intégral de cette page.</div>
