@@ -10,7 +10,7 @@
     {% if level == 5 %}
         <form method="post" {{ form_enctype(picform) }}>
             {{ form_widget(picform) }}
-            {{ form_widget(formtest.content, { 'attr': {'class': 'tinymce'} }) }}
+            {{ form_widget(formtest.login, { 'attr': {'mce_editable': 'true'} }) }}
             {{ form_rest(formtest) }}
             <input type="submit" class="button_blue" value="test" formnovalidate="true"/>
         </form>
@@ -21,4 +21,5 @@
 
 {% block js %}
     <script src="{{ asset('bundles/minedochome/js/admin.js') }}" type="text/javascript"></script>
+    {{ tinymce_init() }}
 {% endblock %}
