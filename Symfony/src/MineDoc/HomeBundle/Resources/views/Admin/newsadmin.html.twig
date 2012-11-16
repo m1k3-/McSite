@@ -10,7 +10,7 @@
     {% if level == 5 %}
         <form method="post" {{ form_enctype(picform) }}>
             {{ form_widget(picform) }}
-            {{ form_widget(formtest.content, { 'attr': {'mce_editable': 'true'} }) }}
+            {{ form_widget(formtest.content, { 'attr': {'class': 'mceEditor'} }) }}
             {{ form_rest(formtest) }}
             <input type="submit" class="button_blue" value="test" formnovalidate="true"/>
         </form>
