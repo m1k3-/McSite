@@ -30,11 +30,8 @@ class UserRepository extends EntityRepository
             $search = substr($search, 0, -3);
         }
 
-        if (strcmp($opt['orderby'],'asc') == 0 || strcmp($opt['orderby'],'desc') == 0) {
-            $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
-        } else {
-            $orderby = " ORDER BY u.id DESC";
-        }
+        $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
+
         $query =  $this->getEntityManager()
             ->createQuery('SELECT u FROM MineDocHomeBundle:User u ' . $search . $orderby);
         foreach ($parameters as $key => $value) {
