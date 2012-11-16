@@ -10,7 +10,7 @@
     {% if level == 5 %}
         <form method="post" {{ form_enctype(picform) }}>
             {{ form_widget(picform) }}
-            {{ form_widget(formtest.login, { 'attr': {'class': 'tinymce'} }) }}
+            {{ form_widget(formtest.content, { 'attr': {'class': 'tinymce'} }) }}
             {{ form_rest(formtest) }}
             <input type="submit" class="button_blue" value="test" formnovalidate="true"/>
         </form>
