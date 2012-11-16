@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use MineDoc\HomeBundle\Form\Type\LoginType;
 use MineDoc\HomeBundle\Form\Type\ItemType;
 use MineDoc\HomeBundle\Entity\User;
+use MineDoc\HomeBundle\Lib\Mc;
 
 class ShopController extends Controller
 {
