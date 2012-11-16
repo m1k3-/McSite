@@ -54,7 +54,7 @@
                     {% if new.picture is defined %}
                         {{ new.picture.file }}
                     {% endif %}
-                    {{ new.content }}
+                    {{ new.content | raw }}
                 </div>
             {% endfor %}
         </div>
