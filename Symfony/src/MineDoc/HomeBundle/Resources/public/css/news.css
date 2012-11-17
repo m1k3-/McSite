@@ -19,6 +19,10 @@
     float: left;
 }
 
+.news .picture img {
+    border-radius: 5px;
+}
+
 .news_content {
     float: left;
     background-color: rgba(255, 255, 255, 0.5);

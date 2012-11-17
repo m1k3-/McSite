@@ -54,7 +54,7 @@
                     <div class="clear"></div>
                     <div class="news_content">
                         {% if new.picture is defined %}
-                            <img src="upload/{{ new.picture.name ~ "/" ~ new.picture.file }}"/>
+                            <div class="picture"><img src="upload/{{ new.picture.name ~ "/" ~ new.picture.file }}"/></div>
                         {% endif %}
                         {{ new.content | raw }}
                     </div>
