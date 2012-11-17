@@ -2,6 +2,10 @@
     float: left;
 }
 
+#news li {
+    margin-left: 20px;
+}
+
 #news .news h2 {
     height: 20px;
     width: auto;
