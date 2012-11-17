@@ -1,3 +1,23 @@
 #news {
     float: left;
 }
+
+#news .news h2 {
+    height: 20px;
+    width: auto;
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    float: left;
+    padding: 5px 10px;
+    border-radius: 8px 8px 0 0;
+}
+.news {
+    float: left;
+}
+
+.news_content {
+    float: left;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+}
