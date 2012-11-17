@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use MineDoc\HomeBundle\Form\Type\LoginType;
+use MineDoc\HomeBundle\Entity\Login;
 use MineDoc\HomeBundle\Form\Type\ItemType;
 use MineDoc\HomeBundle\Entity\User;
 use MineDoc\HomeBundle\Lib\Mc;
@@ -123,7 +124,7 @@ class ActionController extends Controller
     {
         $session = $this->getRequest()->getSession();
         $request = $this->get('request');
-        $login = new Login;
+        $login = new Login();
         $form = $this->createForm(new LoginType(), $login);
 
         if ($request->getMethod() == 'POST') {
