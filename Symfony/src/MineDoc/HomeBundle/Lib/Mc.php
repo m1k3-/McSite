@@ -28,10 +28,28 @@ class Mc
         return ($key == md5($mail . "cobra's the best") ? 1 : 0);
     }
 
+    static public function sendMail1($to)
+    {
+        $Subject = "Inscription Doc's server (MineCraft)";
+
+        $mail_Data = "Salut !\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Ton inscription a été validée sur www.docserver.fr\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "N'oublie pas d'inviter du monde sur le serveur en précisant de mettre ton pseudo dans le champ parrain lors de leur inscription, tu gagneras des sous virtuels a utiliser sur le site en ressources ou pour louer une parcelle sécurisée..\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Bon jeu !\n";
+
+        $headers = 'From: "Doc CoBrA"<noreply.docserver@gmail.com>' . "\n";
+        $headers .= 'Reply-To: noreply.docserver@gmail.com' . "\n";
+        $headers .= 'Content-Type: text/plain; charset="iso-8859-1"' . "\n";
+        $headers .= 'Content-Transfer-Encoding: 8bit';
+
+        mail($to, $Subject, $mail_Data, $headers);
+    }
+
     static public function sendMail($to)
     {
-        $from = "noreply.docserver@gmail.com";
-
         $Subject = "Inscription Doc's server (MineCraft)";
 
         $key = md5($to . "cobra's the best");

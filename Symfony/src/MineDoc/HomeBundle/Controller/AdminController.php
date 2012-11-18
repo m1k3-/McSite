@@ -11,6 +11,7 @@ use MineDoc\HomeBundle\Entity\Item;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
+use MineDoc\HomeBundle\Lib\Mc;
 use MineDoc\HomeBundle\Form\Type\LoginType;
 use MineDoc\HomeBundle\Form\Type\RegisterType;
 use MineDoc\HomeBundle\Form\Type\ItemType;
@@ -166,6 +167,9 @@ class AdminController extends Controller
                     $new = $new + $user->getMoney();
                 }
                 $this->getDoctrine()->getEntityManager()->getRepository("MineDocHomeBundle:User")->updateMoneyUser($id, $new);
+            } elseif ($type == 8) {
+                $user = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($id);
+                Mc::sendMail1($user->getMail());
             }
             else { //Update Fieldz
                 if ($request->getMethod() == 'POST') {
