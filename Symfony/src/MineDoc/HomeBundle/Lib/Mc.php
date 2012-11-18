@@ -36,7 +36,7 @@ class Mc
         $mail_Data .= "\n";
         $mail_Data .= "Ton inscription a été validée sur www.docserver.fr\n";
         $mail_Data .= "\n";
-        $mail_Data .= "N'oublie pas d'inviter du monde sur le serveur en précisant de mettre ton pseudo dans le champ parrain lors de leur inscription, tu gagneras des sous virtuels a utiliser sur le site en ressources ou pour louer une parcelle sécurisée..\n";
+        $mail_Data .= "N'oublie pas d'inviter du monde sur le serveur en précisant de mettre ton pseudo dans le champ parrain lors de leur inscription, tu gagneras des sous virtuels a utiliser sur le site en ressources ou pour louer une parcelle sécurisée.\n";
         $mail_Data .= "\n";
         $mail_Data .= "Bon jeu !\n";
 
