@@ -6,7 +6,7 @@ function reload_chat(){
             if (html != "") {
                 content = $("#content_chat");
                 content.html(html_);
-                content.scrollTo({bottom: '0', left: '0'}, 500);
+                content.scrollTo({top:'100%', left:'0'}, 500);
             }
         }
     });
