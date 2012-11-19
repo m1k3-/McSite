@@ -19,7 +19,9 @@ function command_util(elem) {
         cache:false,
         dataType:'json',
         success:function (data) {
+            data.money = data.money + "$";
             $(elem).next().html(data.notice);
+            $('#money').html(data.money);
         }
     });
     return false;
