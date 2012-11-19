@@ -2,10 +2,11 @@ function reload_chat(){
     $.ajax({
         url: $("#link_getchat").attr('href'),
         cache: false,
-        success: function(html){
+        success: function(html_){
             if (html != "") {
-                $("#content_chat").html(html);
-                $("#content_chat").scrollTo({bottom: '0', left: '0'}, 500);
+                content = $("#content_chat");
+                content.html(html_);
+                content.scrollTo({bottom: '0', left: '0'}, 500);
             }
         }
     });
