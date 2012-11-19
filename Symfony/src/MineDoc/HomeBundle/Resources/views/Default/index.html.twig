@@ -29,7 +29,7 @@
             {% endfor %}
 
             <div class="command_div">
-                <a class="cm_btn" href="{{ path('send_util_command', {"name" : "tp"} }}"><input type="button" class="button_blue {% if money < 20 %}inactive{% endif %}" value="Se téléporter au spawn (20$)"/></a>
+                <a class="cm_btn" href="{{ path('send_util_command', {"name" : "tp"}) }}"><input type="button" class="button_blue {% if money < 20 %}inactive{% endif %}" value="Se téléporter au spawn (20$)"/></a>
                 <span class="notice"></span>
             </div>
             <br/>
