@@ -4,8 +4,8 @@ function reload_chat(){
         cache: false,
         success: function(html){
             if (html != "") {
-                $("#content_chat").html(html);
-                $("#content_chat").scrollTo({bottom: '0'}, 500)
+                $("#content_chat")[0].html(html);
+                $("#content_chat")[0].scrollTo({bottom: '0'}, 500)
             }
         }
     });
