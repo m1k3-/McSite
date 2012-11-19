@@ -35,7 +35,10 @@ class ActionController extends Controller
         if ($name =="tp") {
             if ($money >= 20) {
                 $currentuser->setMoney($money - 20);
-                $service->sendCommand("tp " . $currentuser->getLogin() . "-144 65 232", $session);
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($currentuser);
+                $em->flush();
+                $service->sendCommand("tp " . $currentuser->getLogin() . " -144 65 232", $session);
                 $response = array(
                     'notice' => "<span class='notice'>Et hop !</span>",
                 );
