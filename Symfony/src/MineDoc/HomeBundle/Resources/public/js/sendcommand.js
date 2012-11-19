@@ -19,7 +19,7 @@ function command_util(elem) {
         cache:false,
         dataType:'json',
         success:function (data) {
-            $(elem).next().html(data.msg);
+            $(elem).next().html(data.notice);
         }
     });
     return false;
