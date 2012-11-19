@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    News
+{% endblock %}
+
+{% block body %}
+    <h3>News</h3>
+    <div class="clear"></div>
+    <div id="news">
+        {% for new in news %}
+            <div class="news">
+                <h2 class="news_title">{{ new.name }}</h2>
+                <div class="news_content">
+                    {% if new.picture is defined %}
+                        <img src="upload/{{ new.picture.name ~ "/" ~ new.picture.file }}"/>
+                    {% endif %}
+                    {{ new.content | raw }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

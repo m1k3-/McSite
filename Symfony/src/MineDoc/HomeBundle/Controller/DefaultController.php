@@ -82,6 +82,26 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/", name="news")
+     * @Template()
+     */
+    public function newsAction()
+    {
+        $session = $this->getRequest()->getSession();
+        $session->set('chatstamp', 0);
+        $user = new User;
+        $form_login = $this->createForm(new LoginType(), $user);
+
+        $news = $this->getDoctrine()->getRepository('MineDocHomeBundle:News')->getLastNews(30);
+
+        return array(
+            'form_login' => $form_login->createView(),
+            'news' => $news,
+        );
+    }
+
+
+    /**
      * @Route("/verify/{mail}/{key}", name="verify")
      */
     public function verifyAction($mail, $key)
