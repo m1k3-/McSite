@@ -175,6 +175,51 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/account", name="account")
+     * @Template
+     */
+    public function accountAction()
+    {
+        $session = $this->getRequest()->getSession();
+        $session->set('chatstamp', 0);
+
+        $currentuser = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($session->get('id'));
+        if ($currentuser != null) {
+            $level = $currentuser->getLevel();
+        } else {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        $user = new User;
+        $tmpuser = new User;
+
+        $form_login = $this->createForm(new LoginType, $user);
+        $form = $this->createForm(new RegisterType, $tmpuser);
+
+        $request = $this->get('request');
+
+        if( $request->getMethod() == 'POST' )
+        {
+            $form->bindRequest($request);
+
+            if( $form->isValid() )
+            {
+                $em = $this->getDoctrine()->getEntityManager();
+                $currentuser->setPassword($tmpuser->getPassword());
+                $em->persist($currentuser);
+                $em->flush($currentuser);
+                $this->get('session')->setFlash('notice', 'Informations modifiées !');
+                return $this->redirect($this->generateUrl('homepage'));
+            }
+        }
+
+        return array(
+            'form' => $form->createView(),
+            'form_login' => $form_login->createView(),
+        );
+    }
+
+    /**
      * @Route("/register", name="register")
      * @Template
      */

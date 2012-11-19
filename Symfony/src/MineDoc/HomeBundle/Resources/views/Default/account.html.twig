@@ -1,0 +1,14 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+    Compte
+{% endblock %}
+
+{% block body %}
+    <form method="post" novalidate="novalidate" {{ form_enctype(form) }}>
+        <div id="account">
+            <div>{{ form_label(form.password, 'Changer mot de passe:') }}{{ form_errors(form.password) }}{{ form_widget(form.password) }}</div>
+        </div>
+        <input type="submit" class="button_blue" value="Valider" />
+    </form>
+{% endblock %}
