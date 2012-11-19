@@ -33,7 +33,7 @@ class User
      *
      * @ORM\Column(name="login", type="string", length=255)
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ")
      */
     private $login;
 
@@ -42,7 +42,7 @@ class User
      *
      * @ORM\Column(name="password", type="string", length=255)
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ")
      */
     private $password;
 
@@ -51,7 +51,7 @@ class User
      *
      * @ORM\Column(name="firstname", type="string", length=255)
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ")
      */
     private $firstname;
 
@@ -60,7 +60,7 @@ class User
      *
      * @ORM\Column(name="name", type="string", length=255)
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ")
      */
     private $name;
 
@@ -77,7 +77,7 @@ class User
      *
      * @ORM\Column(name="mail", type="string", length=255)
      *
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ce champ")
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas valide.",
      *     checkMX = true
