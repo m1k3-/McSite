@@ -11,6 +11,7 @@
         {% for new in news %}
             <div class="news">
                 <h2 class="news_title">{{ new.name }}</h2>
+                <div class="clear"></div>
                 <div class="news_content">
                     {% if new.picture is defined %}
                         <img src="upload/{{ new.picture.name ~ "/" ~ new.picture.file }}"/>
