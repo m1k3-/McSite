@@ -1,4 +1,4 @@
-function setday(elem) {
+function command(elem) {
     $.ajax({
         url:$(elem).attr('href'),
         cache:false,
@@ -8,6 +8,18 @@ function setday(elem) {
                 $(elem).children().addClass("inactive");
                 $(elem).next().html(data.time);
             }
+        }
+    });
+    return false;
+}
+
+function command_util(elem) {
+    $.ajax({
+        url:$(elem).attr('href'),
+        cache:false,
+        dataType:'json',
+        success:function (data) {
+            $(elem).next().html(data.msg);
         }
     });
     return false;
@@ -32,7 +44,11 @@ function earnmoney() {
 
 $(document).ready(function () {
     $('.command').click(function(){
-        setday(this);
+        command(this);
+        return false;
+    });
+    $('.command_util').click(function(){
+        command_util(this);
         return false;
     });
     $('#earnmoney').click(function(){

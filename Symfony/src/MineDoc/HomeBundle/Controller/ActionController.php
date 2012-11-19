@@ -16,6 +16,40 @@ use MineDoc\HomeBundle\Lib\Mc;
 class ActionController extends Controller
 {
     /**
+     * @Route("/sendutil/{name}", name="send_util_command")
+     */
+    public function send_util_commandAction($name)
+    {
+        $session = $this->getRequest()->getSession();
+        $service = $this->get('mc_server');
+
+        $currentuser = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($session->get('id'));
+        if ($currentuser != null) {
+            $level = $currentuser->getLevel();
+        } else {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
+        $money = $currentuser->getMoney();
+
+        if ($name =="tp") {
+            if ($money >= 20) {
+                $currentuser->setMoney($money - 20);
+                $service->sendCommand("tp " . $currentuser->getLogin() . "-144 65 232", $session);
+                $response = array(
+                    'notice' => "<span class='notice'>Et hop !</span>",
+                );
+            }
+            else {
+                $response = array(
+                    'notice' => "<span class='warning'>Vous n'avez pas assez de sous !</span>",
+                );
+            }
+        }
+        return new Response(json_encode($response));
+    }
+
+    /**
      * @Route("/send/{type}/{name}", name="send_command")
      */
     public function send_commandAction($type, $name)
