@@ -82,7 +82,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/", name="news")
+     * @Route("/news", name="news")
      * @Template()
      */
     public function newsAction()
