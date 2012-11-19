@@ -41,11 +41,13 @@ class ActionController extends Controller
                 $service->sendCommand("tp " . $currentuser->getLogin() . " -144 65 232", $session);
                 $response = array(
                     'notice' => "<span class='notice'>Et hop !</span>",
+                    'money' => $money - 20,
                 );
             }
             else {
                 $response = array(
                     'notice' => "<span class='warning'>Vous n'avez pas assez de sous !</span>",
+                    'money' => $money,
                 );
             }
         }
