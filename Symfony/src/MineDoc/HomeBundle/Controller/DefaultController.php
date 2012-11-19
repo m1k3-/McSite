@@ -135,7 +135,7 @@ class DefaultController extends Controller
         $service = $this->get('mc_server');
         $session = $this->getRequest()->getSession();
         $chat = $this->getDoctrine()->getRepository('MineDocHomeBundle:Chat');
-        $last_messages = $chat->getLastMessages(40);
+        $last_messages = $chat->getLastMessages(35);
         array_reverse($last_messages);
         $messages = "";
         $chatstamp = $chat->getLast()->getDate()->getTimestamp();

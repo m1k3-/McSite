@@ -5,7 +5,7 @@ function reload_chat(){
         success: function(html){
             if (html != "") {
                 $("#content_chat").html(html);
-                $("#content_chat").scrollTo({top:'100%', left:'0'}, 500)
+                $("#content_chat").scrollTo({bottom: '0', left:'0'}, 500)
             }
         }
     });
@@ -22,7 +22,7 @@ function send_chat() {
 
 $(document).ready( function() {
     reload_chat();
-    setInterval (reload_chat, 1000);
+    setInterval(reload_chat, 1000);
     $("#usermsg").keyup(function (e) {
         if (e.keyCode == 13) {
             send_chat();
