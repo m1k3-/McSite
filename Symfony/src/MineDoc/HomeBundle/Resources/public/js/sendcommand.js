@@ -19,6 +19,9 @@ function command_util(elem) {
         cache:false,
         dataType:'json',
         success:function (data) {
+            if (data.money < 20) {
+                $(this).children().addClass("inactive");
+            }
             data.money = data.money + "$";
             $(elem).next().html(data.notice);
             $('#money').html(data.money);
