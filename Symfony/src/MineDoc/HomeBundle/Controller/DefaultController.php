@@ -198,11 +198,11 @@ class DefaultController extends Controller
 
         $request = $this->get('request');
 
-        if( $request->getMethod() == 'POST' )
+        if($request->getMethod() == 'POST')
         {
             $form->bindRequest($request);
 
-            if( $form->isValid() )
+            if($tmpuser->getPassword() != null)
             {
                 $em = $this->getDoctrine()->getEntityManager();
                 $currentuser->setPassword($tmpuser->getPassword());
