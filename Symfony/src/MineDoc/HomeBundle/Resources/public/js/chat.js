@@ -3,7 +3,7 @@ function reload_chat(){
         url: $("#link_getchat").attr('href'),
         cache: false,
         success: function(html_){
-            if (html != "") {
+            if (html_ != "") {
                 content = $("#content_chat");
                 content.html(html_);
                 content.scrollTo({top:'100%', left:'0'}, 500);
