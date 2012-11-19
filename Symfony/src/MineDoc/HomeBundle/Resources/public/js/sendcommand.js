@@ -20,7 +20,7 @@ function command_util(elem) {
         dataType:'json',
         success:function (data) {
             if (data.money < 20) {
-                $(this).children().addClass("inactive");
+                $(elem).children().addClass("inactive");
             }
             data.money = data.money + "$";
             $(elem).next().html(data.notice);
