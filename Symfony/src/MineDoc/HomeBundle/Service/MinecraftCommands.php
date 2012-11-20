@@ -11,10 +11,10 @@ class MinecraftCommands {
         if ($session->get('logged') > 0)
         {
             $con = new \PHPsend();
-            $con->PHPconnect("localhost","3fdfa535dedb1556","6530");
-            $con->PHPcommand($command);
-            $con->PHPcommand("say ".$session->get('name')." vient de faire cette commande: [".$command."] !");
-            $con->PHPdisconnect();
+            $con->PHPSconnect("localhost","3fdfa535dedb1556","6530");
+            $con->PHPScommand($command);
+            $con->PHPScommand("say ".$session->get('name')." vient de faire cette commande: [".$command."] !");
+            $con->PHPSdisconnect();
         }
         else {
             echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
