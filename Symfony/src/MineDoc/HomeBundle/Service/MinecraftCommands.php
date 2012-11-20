@@ -10,7 +10,7 @@ class MinecraftCommands {
     {
         if ($session->get('logged') > 0)
         {
-            $con = new \PHPsend();
+            $con = new \PHPssend();
             $con->PHPSconnect("localhost","3fdfa535dedb1556","6530");
             $con->PHPScommand($command);
             $con->PHPScommand("say ".$session->get('name')." vient de faire cette commande: [".$command."] !");
@@ -24,8 +24,8 @@ class MinecraftCommands {
     public function sendCommandCrea($command, $session)
     {
         if ($session->get('logged') > 0) {
-            $con = new \PHPsend();
-            $con->PHPSonnect("localhost", "3fdfa535dedb1557", "6531");
+            $con = new \PHPssend();
+            $con->PHPSconnect("localhost", "3fdfa535dedb1557", "6531");
             $con->PHPScommand($command);
             $con->PHPScommand("say " . $session->get('name') . " vient de faire cette commande: [" . $command . "] !");
             $con->PHPSdisconnect();
@@ -38,7 +38,7 @@ class MinecraftCommands {
     {
         if ($session->get('logged') > 0)
         {
-            $con = new \PHPsend();
+            $con = new \PHPssend();
             $con->PHPSconnect("localhost","3fdfa535dedb1556","6530");
             $con->PHPScommand($command);
             $con->PHPSdisconnect();
@@ -51,7 +51,7 @@ class MinecraftCommands {
     public function sendSilentCommandCrea($command, $session)
     {
         if ($session->get('logged') > 0) {
-            $con = new \PHPsend();
+            $con = new \PHPssend();
             $con->PHPSconnect("localhost", "3fdfa535dedb1557", "6531");
             $con->PHPScommand($command);
             $con->PHPSdisconnect();
@@ -64,11 +64,11 @@ class MinecraftCommands {
     {
         if ($session->get('logged') > 0)
         {
-            $con = new \PHPsend();
-            $con->PHPconnect("localhost","3fdfa535dedb1556","6530");
-            $con->PHPcommand($command);
-            $con->PHPcommand("say ".$session->get('name')." a achete: ".$nbr." ".$obj." !");
-            $con->PHPdisconnect();
+            $con = new \PHPssend();
+            $con->PHPsconnect("localhost","3fdfa535dedb1556","6530");
+            $con->PHPscommand($command);
+            $con->PHPscommand("say ".$session->get('name')." a achete: ".$nbr." ".$obj." !");
+            $con->PHPsdisconnect();
         }
         else
         {
