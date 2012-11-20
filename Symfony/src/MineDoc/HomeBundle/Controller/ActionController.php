@@ -24,6 +24,7 @@ class ActionController extends Controller
         $service = $this->get('mc_server');
 
         $currentuser = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($session->get('id'));
+
         if ($currentuser != null) {
             $level = $currentuser->getLevel();
         } else {
