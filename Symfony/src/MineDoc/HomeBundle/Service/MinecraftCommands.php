@@ -2,7 +2,7 @@
 
 namespace MineDoc\HomeBundle\Service;
 
-use PHPsend;
+use PHPSsend;
 
 class MinecraftCommands {
 
