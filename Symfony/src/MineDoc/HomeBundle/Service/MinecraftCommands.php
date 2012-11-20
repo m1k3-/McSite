@@ -2,6 +2,8 @@
 
 namespace MineDoc\HomeBundle\Service;
 
+use PHPsend;
+
 class MinecraftCommands {
 
     public function sendCommand($command, $session)
@@ -9,10 +11,10 @@ class MinecraftCommands {
         if ($session->get('logged') > 0)
         {
             $con = new \PHPsend();
-            $con->PHPSconnect("localhost","3fdfa535dedb1556","6530");
-            $con->PHPScommand($command);
-            $con->PHPScommand("say ".$session->get('name')." vient de faire cette commande: [".$command."] !");
-            $con->PHPSdisconnect();
+            $con->PHPconnect("localhost","3fdfa535dedb1556","6530");
+            $con->PHPcommand($command);
+            $con->PHPcommand("say ".$session->get('name')." vient de faire cette commande: [".$command."] !");
+            $con->PHPdisconnect();
         }
         else {
             echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
