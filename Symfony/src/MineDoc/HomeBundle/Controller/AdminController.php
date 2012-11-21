@@ -195,7 +195,8 @@ class AdminController extends Controller
                 }
             }
         }
-        return $this->redirect($this->generateUrl('panel', array('pages' => 15, 'orderby' => 'id', 'type' => 'desc', 'search' => 'nc')));
+        //return $this->redirect($this->generateUrl('panel', array('pages' => 15, 'orderby' => 'id', 'type' => 'desc', 'search' => 'nc')));
+        return $this->redirect($_SERVER['HTTP_REFERER']);
     }
 
     /**

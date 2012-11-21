@@ -4,15 +4,25 @@
  * Time: 2:55 PM
  */
 
+function changeMoney(elem) {
+    money = $(elem).val();
+    id = $(elem).attr("data-id");
+
+    button = $(elem).closest(".addmoney");
+
+    button.attr("href", "/do/7/" + id + "/" + money);
+}
+
+function updateSearch(elem) {
+    keywords = $(elem).val();
+    button = $("#search_url");
+    regex = "(/search/)+([^/]*)";
+    adress = button.attr('href');
+    adress = adress.replace("regex", "/search/" + keywords);
+    button.attr("href", adress);
+}
+
 $(document).ready(function () {
-
-    $(".money_val").change(function() {
-
-        money = $(this).val();
-        id = $(this).attr("data-id")
-
-        button = $(".addmoney")
-
-        button.attr("href", "/do/7/" + id + "/" + money);
-    });
+    $(".money_val").change(changeMoney(this));
+    $("#search_panel").change(updateSearch(this));
 });
