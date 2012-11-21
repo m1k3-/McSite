@@ -22,7 +22,7 @@ function command_util(elem) {
             if (data.money < 20) {
                 $(elem).children().addClass("inactive");
             }
-            data.money = data.money + "$";
+            data.money = data.money.toFixed(2) + "$";
             $(elem).next().html(data.notice);
             $('#money').html(data.money);
         }
