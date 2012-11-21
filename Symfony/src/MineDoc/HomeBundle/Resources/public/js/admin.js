@@ -26,7 +26,7 @@ $(document).ready(function () {
     $(".money_val").change(function(){
         changeMoney(this);
     });
-    $("#search_panel").change(function(){
+    $("#search_panel").keyup(function(){
         updateSearch(this);
     });
 });
