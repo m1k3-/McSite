@@ -12,14 +12,14 @@
         <a href="{{ path('panel', {'pages' : 30, "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : app.request.attributes.get('search')}) }}" class="button_blue">30</a>
         <a href="{{ path('panel', {'pages' : 100, "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : app.request.attributes.get('search')}) }}" class="button_blue">100</a>
 
-        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'asc', "type" : 'id', "search" : app.request.attributes.get('search')}) }}" class="button_blue">Id ▲</a>
-        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'desc', "type" : 'id', "search" : app.request.attributes.get('search')}) }}" class="button_blue">Id ▼</a>
+        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'id', "type" : 'asc', "search" : app.request.attributes.get('search')}) }}" class="button_blue">Id ▲</a>
+        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'id', "type" : 'desc', "search" : app.request.attributes.get('search')}) }}" class="button_blue">Id ▼</a>
 
-        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'asc', "type" : 'level', "search" : app.request.attributes.get('search')}) }}" class="button_blue">Lvl ▲</a>
-        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'desc', "type" : 'level', "search" : app.request.attributes.get('search')}) }}" class="button_blue">Lvl ▼</a>
+        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'level', "type" : 'asc', "search" : app.request.attributes.get('search')}) }}" class="button_blue">Lvl ▲</a>
+        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'level', "type" : 'desc', "search" : app.request.attributes.get('search')}) }}" class="button_blue">Lvl ▼</a>
 
-        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'asc', "type" : 'money', "search" : app.request.attributes.get('search')}) }}" class="button_blue">$ ▲</a>
-        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'desc', "type" : 'money', "search" : app.request.attributes.get('search')}) }}" class="button_blue">$ ▼</a>
+        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'money', "type" : 'asc', "search" : app.request.attributes.get('search')}) }}" class="button_blue">$ ▲</a>
+        <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : 'money', "type" : 'desc', "search" : app.request.attributes.get('search')}) }}" class="button_blue">$ ▼</a>
 
         <input id="search_panel" type="search" placeholder="Search"/>
          <a id="search_url" href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : 'nc'}) }}" class="button_blue">Search</a>
