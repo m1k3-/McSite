@@ -8,7 +8,7 @@ function changeMoney(elem) {
     money = $(elem).val();
     id = $(elem).attr("data-id");
 
-    button = $(elem).closest(".addmoney");
+    button = $(elem).next(".addmoney");
 
     button.attr("href", "/do/7/" + id + "/" + money);
 }
