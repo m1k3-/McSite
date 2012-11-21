@@ -23,6 +23,10 @@ function updateSearch(elem) {
 }
 
 $(document).ready(function () {
-    $(".money_val").change(changeMoney(this));
-    $("#search_panel").change(updateSearch(this));
+    $(".money_val").change(function(){
+        changeMoney(this);
+    });
+    $("#search_panel").change(function(){
+        updateSearch(this);
+    });
 });
