@@ -37,7 +37,7 @@ function earnmoney() {
         dataType:'json',
         success:function (data) {
             if (data.ok) {
-                data.money = data.money + "$";
+                data.money = data.money.toFixed(2) + "$";
                 $("#earnmoney input").addClass("inactive");
                 $('#earnmoneytime').html(data.earnmoneytime);
                 $('#money').html(data.money);
