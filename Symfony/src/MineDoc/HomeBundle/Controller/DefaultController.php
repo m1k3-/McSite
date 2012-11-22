@@ -71,7 +71,7 @@ class DefaultController extends Controller
         $rank = Mc::GetRank($session->get('level'));
         if ($session->get('alert_mail') == 2) {
             $session->set('alert_mail', 1);
-        } elseif ($session->get('alert_mail') == 2) {
+        } elseif ($session->get('alert_mail') == 1) {
             $session->set('alert_mail', 0);
         }
         return array(
