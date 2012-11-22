@@ -243,7 +243,8 @@ class DefaultController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($reguser);
                 $em->flush();
-                $this->get('session')->setFlash('notice', 'Vous êtes enregistré !<SCRIPT type="text/javascript">alert("Merci de vérifier vos mail ainsi que votre boite SPAM !!! (pour hotmail/yahoo etc...)");</SCRIPT> ');
+                $this->get('session')->setFlash('notice', 'Vous êtes enregistré !');
+                $this->get('session')->set('alert_mail', 1);
                 return $this->redirect($this->generateUrl('homepage'));
             }
         }

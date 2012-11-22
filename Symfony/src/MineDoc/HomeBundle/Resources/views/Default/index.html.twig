@@ -32,7 +32,7 @@
                 <a class="command_util cm_btn" href="{{ path('send_util_command', {"name" : "tp"}) }}"><input type="button" class="button_blue {% if money < 20 %}inactive{% endif %}" value="Se téléporter au spawn (20$)"/></a>
                 <span></span>
             </div>
-           <div class="clear"></div>
+            <div class="clear"></div>
 
         </div>
         {% if level > 1 %}
@@ -83,5 +83,8 @@
         {% endblock %}
 
         {% block js %}
+            {% if app.session.get('alert_mail') == 1 %}
+                <script type="text/javascript">alert("Merci de vérifier vos mail ainsi que votre boite SPAM !!! (pour hotmail/yahoo etc...)")</script>
+            {% endif %}
             <script src="{{ asset('bundles/minedochome/js/sendcommand.js') }}" type="text/javascript"></script>
         {% endblock %}
