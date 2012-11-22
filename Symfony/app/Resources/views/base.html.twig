@@ -38,7 +38,7 @@
             <a href="{{ path('panel', {'pages' : 15, 'orderby' : 'id', 'type' : 'desc', 'search' : "nc"}) }}">
                 <div class="bg">Admin</div>
                 {% elseif app.session.get('level') > 0 %}
-                <a href="">
+                <a href="{{ path('account')}}">
                     <div class="bg">Compte</div>
                     {% else %}
                     <a href="{{ path('register')}}">
