@@ -69,6 +69,11 @@ class DefaultController extends Controller
             $earnmoney = 0;
         }
         $rank = Mc::GetRank($session->get('level'));
+        if ($session->get('alert_mail') == 2) {
+            $session->set('alert_mail', 1);
+        } elseif ($session->get('alert_mail') == 2) {
+            $session->set('alert_mail', 0);
+        }
         return array(
             'commands' => $res_commands,
             'earnmoney' => $earnmoney,
@@ -244,7 +249,7 @@ class DefaultController extends Controller
                 $em->persist($reguser);
                 $em->flush();
                 $this->get('session')->setFlash('notice', 'Vous êtes enregistré !');
-                $this->get('session')->set('alert_mail', 1);
+                $this->get('session')->set('alert_mail', 2);
                 return $this->redirect($this->generateUrl('homepage'));
             }
         }
