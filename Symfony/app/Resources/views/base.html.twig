@@ -35,7 +35,7 @@
         </div>
         <div class="element">
             {% if app.session.get('level') == 5 %}
-            <a href="{{ path('panel', {'pages' : 15, 'orderby' : 'id', 'type' : 'desc', 'search' : "nc"}) }}">
+            <a href="{{ path('panel', {'pages' : 15, 'orderby' : 'id', 'type' : 'desc', 'search' : "nc", "more" : "act"}) }}">
                 <div class="bg">Admin</div>
                 {% elseif app.session.get('level') > 0 %}
                 <a href="{{ path('account')}}">

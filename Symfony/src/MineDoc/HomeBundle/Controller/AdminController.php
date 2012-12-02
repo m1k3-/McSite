@@ -21,10 +21,10 @@ class AdminController extends Controller
 {
 
     /**
-     * @Route("/panel/{pages}/{orderby}/{type}/{search}", name="panel")
+     * @Route("/panel/{pages}/{orderby}/{type}/{search}/{more}", name="panel")
      * @Template()
      */
-    public function panelAction($pages, $orderby, $type, $search)
+    public function panelAction($pages, $orderby, $type, $search, $more)
     {
         $session = $this->getRequest()->getSession();
         $session->set('chatstamp', 0);
@@ -35,6 +35,7 @@ class AdminController extends Controller
         $opt['orderby'] = $orderby;
         $opt['type'] = $type;
         $opt['search'] = $search;
+        $opt['more'] = $more;
 
         $form_login = $this->createForm(new LoginType, $user);
         $item_create = $this->createForm(new ItemType, $item);
@@ -50,6 +51,8 @@ class AdminController extends Controller
 
         $ua = array();
         $entry = $this->getDoctrine()->getEntityManager()->getRepository("MineDocHomeBundle:User")->getLastUsers($pages, $opt);
+        $count = $entry['count'];
+        $entry = $entry['obj'];
         $users = array();
         foreach ($entry as $user)
         {
@@ -62,6 +65,7 @@ class AdminController extends Controller
             'users' => $users,
             'form_login' => $form_login->createView(),
             'level' => $level,
+            'count' => $count,
         );
     }
 

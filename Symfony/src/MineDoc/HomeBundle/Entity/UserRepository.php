@@ -16,8 +16,8 @@ class UserRepository extends EntityRepository
     {
         $search = "";
         $parameters = array();
-        if ($opt['search'] != "nc") {
-            $keywords = explode(" ", $opt['search']);
+        if ($opt['search'] != "nc" && trim($opt['search']) != "") {
+            $keywords = explode(" ", trim($opt['search']));
 
             $search = " WHERE ";
             $l = 0;
@@ -32,13 +32,25 @@ class UserRepository extends EntityRepository
 
         $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
 
+        $add ="";
+
+        if ($opt['more'] == "act") {
+            $add = " AND u.level = 0";
+        }
+
+        $counter = $this->getEntityManager()
+            ->createQuery('SELECT COUNT(u) FROM MineDocHomeBundle:User u ' . $search . $orderby. $add)
+            ->getQuery()
+            ->getSingleScalarResult();
+
         $query =  $this->getEntityManager()
-            ->createQuery('SELECT u FROM MineDocHomeBundle:User u ' . $search . $orderby);
+            ->createQuery('SELECT u FROM MineDocHomeBundle:User u ' . $search . $orderby. $add);
         foreach ($parameters as $key => $value) {
             $query->setParameter($key, $value);
         }
-        return $query->setMaxResults($i)
-            ->getResult();
+        $res['obj'] = $query->setMaxResults($i)->getResult();
+        $res['count'] = $counter;
+        return $res;
     }
 
     public function deleteUser($id)
