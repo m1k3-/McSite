@@ -18,8 +18,6 @@ class UserRepository extends EntityRepository
         $parameters = array();
         if ($opt['search'] != "nc" && $opt['search'] != "") {
             $keywords = explode(" ", $opt['search']);
-print_r($keywords);
-            exit();
             $search = " WHERE ";
             $separator= " AND ";
             $l = 0;
@@ -49,6 +47,9 @@ print_r($keywords);
 
         $query =  $this->getEntityManager()
             ->createQuery('SELECT u FROM MineDocHomeBundle:User u ' . $search . $add . $orderby);
+        print_r($query);
+        print_r($l);
+        exit;
         foreach ($parameters as $key => $value) {
             $query->setParameter($key, $value);
         }
