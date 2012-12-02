@@ -30,20 +30,20 @@ class UserRepository extends EntityRepository
             $search = substr($search, 0, -3);
         }
 
-        $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
-
         $add ="";
 
         if ($opt['more'] == "act") {
-            $add = " AND u.level = 0";
+            $add = " AND u.level = 0 ";
         }
 
+        $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
+
         $counter = $this->getEntityManager()
-            ->createQuery('SELECT COUNT(u) FROM MineDocHomeBundle:User u ' . $search . $orderby. $add)
+            ->createQuery('SELECT COUNT(u) FROM MineDocHomeBundle:User u ' . $search . $add . $orderby)
             ->getSingleScalarResult();
 
         $query =  $this->getEntityManager()
-            ->createQuery('SELECT u FROM MineDocHomeBundle:User u ' . $search . $orderby. $add);
+            ->createQuery('SELECT u FROM MineDocHomeBundle:User u ' . $search . $add . $orderby);
         foreach ($parameters as $key => $value) {
             $query->setParameter($key, $value);
         }
