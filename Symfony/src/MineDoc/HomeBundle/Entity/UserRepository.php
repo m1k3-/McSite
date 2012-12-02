@@ -31,8 +31,7 @@ class UserRepository extends EntityRepository
         } else {
             $separator= " WHERE ";
         }
-var_dump($parameters);
-        exit();
+
         $add ="";
 
         if ($opt['more'] == "act") {
