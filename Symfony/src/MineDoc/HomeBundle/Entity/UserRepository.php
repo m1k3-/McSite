@@ -20,6 +20,7 @@ class UserRepository extends EntityRepository
             $keywords = explode(" ", trim($opt['search']));
 
             $search = " WHERE ";
+            $separator= " AND ";
             $l = 0;
             foreach ($keywords as $keyword) {
                 $parameter = 'keyword' . $l;
@@ -28,16 +29,17 @@ class UserRepository extends EntityRepository
                 $l++;
             }
             $search = substr($search, 0, -3);
+        } else {
+            $separator= " WHERE ";
         }
 
         $add ="";
 
         if ($opt['more'] == "act") {
-            $add = " AND u.level = 0 ";
+            $add = " ". $separator ." u.level = 0 ";
         }
 
         $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
-exit('SELECT COUNT(u) FROM MineDocHomeBundle:User u ' . $search . $add . $orderby);
         $counter = $this->getEntityManager()
             ->createQuery('SELECT COUNT(u) FROM MineDocHomeBundle:User u ' . $search . $add . $orderby)
             ->getSingleScalarResult();
