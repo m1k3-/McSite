@@ -24,7 +24,7 @@
         <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : app.request.attributes.get('search'), "more" : "nact"}) }}" class="button_blue">Mail not ok</a>
         <a href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : app.request.attributes.get('search'), "more" : "nc"}) }}" class="button_blue">Others</a>
 
-        <input id="search_panel" type="search" placeholder="Search"/>
+        <input {% if app.request.attributes.get('search') != "nc" %} value="{{ app.request.attributes.get('search') }}" {% endif %} id="search_panel" type="search" placeholder="Search"/>
         <a id="search_url" href="{{ path('panel', {'pages' : app.request.attributes.get('pages'), "orderby" : app.request.attributes.get('orderby'), "type" : app.request.attributes.get('type'), "search" : 'nc', "more" : app.request.attributes.get('more')}) }}" class="button_blue">Search</a>
         <div id="counter">{{ count }} results, {{ app.request.attributes.get('pages') }} displayed</div>
         <form action="{{ path('saveitem') }}" method="post" {{ form_enctype(form_item) }}>
