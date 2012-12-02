@@ -39,8 +39,8 @@ class UserRepository extends EntityRepository
         } elseif ($opt['more'] == "nact") {
             $add = " ". $separator ." u.level = -1 ";
         }
-exit('SELECT u FROM MineDocHomeBundle:User u ' . $search . $add . $orderby);
         $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
+        exit('SELECT u FROM MineDocHomeBundle:User u ' . $search . $add . $orderby);
         $counter = $this->getEntityManager()
             ->createQuery('SELECT COUNT(u) FROM MineDocHomeBundle:User u ' . $search . $add . $orderby)
             ->getSingleScalarResult();
