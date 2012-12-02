@@ -31,7 +31,8 @@ class UserRepository extends EntityRepository
         } else {
             $separator= " WHERE ";
         }
-
+var_dump($parameters);
+        exit();
         $add ="";
 
         if ($opt['more'] == "act") {
@@ -47,8 +48,6 @@ class UserRepository extends EntityRepository
 
         $query =  $this->getEntityManager()
             ->createQuery('SELECT u FROM MineDocHomeBundle:User u ' . $search . $add . $orderby);
-var_dump($query);
-        exit();
         foreach ($parameters as $key => $value) {
             $query->setParameter($key, $value);
         }
