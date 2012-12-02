@@ -18,7 +18,8 @@ class UserRepository extends EntityRepository
         $parameters = array();
         if ($opt['search'] != "nc" && $opt['search'] != "") {
             $keywords = explode(" ", $opt['search']);
-
+print_r($keywords);
+            exit();
             $search = " WHERE ";
             $separator= " AND ";
             $l = 0;
