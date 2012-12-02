@@ -15,6 +15,9 @@ function changeMoney(elem) {
 
 function updateSearch(elem) {
     keywords = $(elem).val();
+    if (keywords == "") {
+        keywords = "nc";
+    }
     button = $("#search_url");
     regex = new RegExp("/+[^/]+$");
     adress = button.attr('href');
