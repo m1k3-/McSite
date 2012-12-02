@@ -49,7 +49,7 @@ class UserRepository extends EntityRepository
             ->createQuery('SELECT u FROM MineDocHomeBundle:User u ' . $search . $add . $orderby);
         print_r($query);
         print_r($l);
-        exit;
+        exit();
         foreach ($parameters as $key => $value) {
             $query->setParameter($key, $value);
         }
