@@ -37,6 +37,8 @@ class UserRepository extends EntityRepository
 
         if ($opt['more'] == "act") {
             $add = " ". $separator ." u.level = 0 ";
+        } elseif ($opt['more'] == "nact") {
+            $add = " ". $separator ." u.level = -1 ";
         }
 
         $orderby = " ORDER BY u." . $opt['orderby'] . " " . $opt['type'];
