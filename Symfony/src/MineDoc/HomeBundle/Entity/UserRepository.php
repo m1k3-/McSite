@@ -40,7 +40,6 @@ class UserRepository extends EntityRepository
 
         $counter = $this->getEntityManager()
             ->createQuery('SELECT COUNT(u) FROM MineDocHomeBundle:User u ' . $search . $orderby. $add)
-            ->getQuery()
             ->getSingleScalarResult();
 
         $query =  $this->getEntityManager()
