@@ -14,7 +14,7 @@ function changeMoney(elem) {
 }
 
 function updateSearch(elem) {
-    keywords = $(elem).val();
+    keywords = $.trim($(elem).val());
     if (keywords == "") {
         keywords = "nc";
     }
