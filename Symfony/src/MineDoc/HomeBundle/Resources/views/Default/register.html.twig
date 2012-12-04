@@ -7,10 +7,11 @@
 {% block body %}
     <form method="post" novalidate="novalidate" {{ form_enctype(form) }}>
         <div id="register">
-            <div>{{ form_label(form.login, 'Login (minecraft)') }}{{ form_errors(form.login) }}{{ form_widget(form.login) }}</div>
-            <div>{{ form_label(form.password, 'Mot de passe') }}{{ form_errors(form.password) }}{{ form_widget(form.password) }}</div>
-            <div>{{ form_label(form.firstname, 'Prénom') }}{{ form_errors(form.firstname) }}{{ form_widget(form.firstname) }}</div>
-            <div>{{ form_label(form.name, 'Nom') }}{{ form_errors(form.name) }}{{ form_widget(form.name) }}</div>
+            <div>{{ form_label(form.login, 'Login (minecraft)*') }}{{ form_errors(form.login) }}{{ form_widget(form.login) }}</div>
+            <div>{{ form_label(form.password, 'Mot de passe*') }}{{ form_errors(form.password) }}{{ form_widget(form.password) }}</div>
+            <div>{{ form_label(form.firstname, 'Prénom*') }}{{ form_errors(form.firstname) }}{{ form_widget(form.firstname) }}</div>
+            <div>{{ form_label(form.name, 'Nom*') }}{{ form_errors(form.name) }}{{ form_widget(form.name) }}</div>
+            <div>{{ form_label(form.name, 'E-Mail*') }}{{ form_errors(form.mail) }}{{ form_widget(form.mail) }}</div>
             {{ form_rest(form) }}
         </div>
         <input type="submit" class="button_blue" value="Demande d'inscription" />
