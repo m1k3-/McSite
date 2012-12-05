@@ -39,7 +39,7 @@ class ActionController extends Controller
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($currentuser);
                 $em->flush();
-                $service->sendCommand("tp " . $currentuser->getLogin() . " -134.5 64.5 247.5", $session);
+                $service->sendCommand("tp " . $currentuser->getLogin() . " -135 65 248", $session);
                 $response = array(
                     'notice' => "<span class='notice'>Et hop !</span>",
                     'money' => $money - 20,
