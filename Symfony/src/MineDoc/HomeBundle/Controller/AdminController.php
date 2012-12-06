@@ -158,22 +158,27 @@ class AdminController extends Controller
                     //$service->sendSilentCommand("authme register ". $user->getLogin() . " " . $user->getPassword(), $session);
                     $service->sendCommand("whitelist add ". $user->getLogin(), $session);
                 }
-                else if ($new == 0)
+                else if ($new == 0 && $user->getLevel() > 0)
                 {
                     $service->sendCommand("whitelist remove " . $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($id)->getLogin(), $session);
                 }
                 $this->getDoctrine()->getEntityManager()->getRepository("MineDocHomeBundle:User")->updateLevelUser($id, $new);
             }
-            elseif ($type == 7) {
+            elseif ($type == 7) { // Addmoney
                 if ($user->getMoney() + $new < 0) {
                     $new = 0;
                 } else {
                     $new = $new + $user->getMoney();
                 }
                 $this->getDoctrine()->getEntityManager()->getRepository("MineDocHomeBundle:User")->updateMoneyUser($id, $new);
-            } elseif ($type == 8) {
+            } elseif ($type == 8) { // Validate
                 $user = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($id);
                 Mc::sendMail1($user->getMail());
+            }
+            elseif ($type == 9) { // Refuse
+                $user = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($id);
+                Mc::sendRefuseMail($user->getMail());
+                $this->getDoctrine()->getEntityManager()->getRepository("MineDocHomeBundle:User")->deleteUser($id);
             }
             else { //Update Fieldz
                 if ($request->getMethod() == 'POST') {

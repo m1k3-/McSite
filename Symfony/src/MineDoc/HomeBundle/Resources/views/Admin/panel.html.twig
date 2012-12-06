@@ -37,6 +37,7 @@
                 <div class="user_div">
                     <div class="user_id">Id: {{ user.user.id}}</div><a href="{{ path('do', {'type' : 1, 'id' : user.user.id, 'new' : 0}) }}" class="button_blue">Supprimer</a>
                     <a href="{{ path('do', {'type' : 8, 'id' : user.user.id, 'new' : 0}) }}" class="button_blue">Valider</a>
+                    <a href="{{ path('do', {'type' : 9, 'id' : user.user.id, 'new' : 0}) }}" class="button_blue">Refuser</a>
                     <div class="user_id">Login: {{ user.user.login }}</div>
 
                     <form action="{{ path('do', {'type' : 2, 'id' : user.user.id, 'new' : 0}) }}"

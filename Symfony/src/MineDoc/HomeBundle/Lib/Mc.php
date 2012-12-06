@@ -28,6 +28,31 @@ class Mc
         return ($key == md5($mail . "cobra's the best") ? 1 : 0);
     }
 
+    static public function sendRefuseMail($to)
+    {
+        $Subject = "Inscription Doc's server (MineCraft)";
+
+        $mail_Data = "Salut !\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Ton inscription a été refusée sur www.docserver.fr\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Si tu as été refusé, cela peut être dû à plusieurs raisons:\n";
+        $mail_Data .= "\t- Pseudo incorrect, comportant des espaces ou caractères interdits\n";
+        $mail_Data .= "\t- Informations erronées, faux prénom/nom ou mail invalide\n";
+        $mail_Data .= "\t- Multiples inscriptions sur le site\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Essaie de te réinscrire en respectant ces critères\n";
+        $mail_Data .= "\n";
+        $mail_Data .= "Bye !\n";
+
+        $headers = 'From: "Doc CoBrA"<noreply.docserver@gmail.com>' . "\n";
+        $headers .= 'Reply-To: noreply.docserver@gmail.com' . "\n";
+        $headers .= 'Content-Type: text/plain; charset="iso-8859-1"' . "\n";
+        $headers .= 'Content-Transfer-Encoding: 8bit';
+
+        mail($to, $Subject, $mail_Data, $headers);
+    }
+
     static public function sendMail1($to)
     {
         $Subject = "Inscription Doc's server (MineCraft)";
