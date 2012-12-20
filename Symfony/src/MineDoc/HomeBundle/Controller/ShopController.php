@@ -74,6 +74,8 @@ class ShopController extends Controller
 
         $user = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($session->get('id'));
 
+        $nbr = ($nbr < 0? 0 : $nbr);
+
         if ($user != null)
         {
             $money_user = $user->getMoney();
