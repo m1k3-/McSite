@@ -2,7 +2,7 @@
 
 namespace MineDoc\HomeBundle\Service;
 
-use Websend;
+use PHPSsend;
 
 class MinecraftCommands {
 
@@ -10,13 +10,26 @@ class MinecraftCommands {
     {
         if ($session->get('logged') > 0)
         {
-            $con = new \Websend("localhost");
-            $con->connect("lolzbiteAA1");
-            $con->doCommandAsConsole($command);
-            $con->doCommandAsConsole("say ".$session->get('login')." vient de faire cette commande: [".$command."] !");
-            $con->disconnect();
+            $con = new \PHPSsend();
+            $con->PHPSconnect("localhost","3fdfa535dedb1556","6530");
+            $con->PHPScommand($command);
+            $con->PHPScommand("say ".$session->get('name')." vient de faire cette commande: [".$command."] !");
+            $con->PHPSdisconnect();
         }
         else {
+            echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
+        }
+    }
+
+    public function sendCommandCrea($command, $session)
+    {
+        if ($session->get('logged') > 0) {
+            $con = new \PHPSsend();
+            $con->PHPSconnect("localhost", "3fdfa535dedb1557", "6531");
+            $con->PHPScommand($command);
+            $con->PHPScommand("say " . $session->get('name') . " vient de faire cette commande: [" . $command . "] !");
+            $con->PHPSdisconnect();
+        } else {
             echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
         }
     }
@@ -25,12 +38,24 @@ class MinecraftCommands {
     {
         if ($session->get('logged') > 0)
         {
-            $con = new \Websend("localhost");
-            $con->connect("lolzbiteAA1");
-            $con->doCommandAsConsole($command);
-            $con->disconnect();
+            $con = new \PHPSsend();
+            $con->PHPSconnect("localhost","3fdfa535dedb1556","6530");
+            $con->PHPScommand($command);
+            $con->PHPSdisconnect();
         }
         else {
+            echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
+        }
+    }
+
+    public function sendSilentCommandCrea($command, $session)
+    {
+        if ($session->get('logged') > 0) {
+            $con = new \PHPSsend();
+            $con->PHPSconnect("localhost", "3fdfa535dedb1557", "6531");
+            $con->PHPScommand($command);
+            $con->PHPSdisconnect();
+        } else {
             echo "<div class='warning throw'>Vous n'avez pas la permission</div>";
         }
     }
@@ -39,11 +64,11 @@ class MinecraftCommands {
     {
         if ($session->get('logged') > 0)
         {
-            $con = new \Websend("localhost");
-            $con->connect("lolzbiteAA1");
-            $con->doCommandAsConsole($command);
-            $con->doCommandAsConsole("say ".$session->get('login')." a achete: ".$nbr." ".$obj." !");
-            $con->disconnect();
+            $con = new \PHPSsend();
+            $con->PHPsconnect("localhost","3fdfa535dedb1556","6530");
+            $con->PHPscommand($command);
+            $con->PHPscommand("say ".$session->get('name')." a achete: ".$nbr." ".$obj." !");
+            $con->PHPsdisconnect();
         }
         else
         {
