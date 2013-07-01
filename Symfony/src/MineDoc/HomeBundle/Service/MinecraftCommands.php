@@ -13,7 +13,7 @@ class MinecraftCommands {
             $con = new \Websend("localhost");
             $con->connect("lolzbiteAA1");
             $con->doCommandAsConsole($command);
-            $con->doCommandAsConsole("say ".$session->get('name')." vient de faire cette commande: [".$command."] !");
+            $con->doCommandAsConsole("say ".$session->get('login')." vient de faire cette commande: [".$command."] !");
             $con->disconnect();
         }
         else {
@@ -42,7 +42,7 @@ class MinecraftCommands {
             $con = new \Websend("localhost");
             $con->connect("lolzbiteAA1");
             $con->doCommandAsConsole($command);
-            $con->doCommandAsConsole("say ".$session->get('name')." a achete: ".$nbr." ".$obj." !");
+            $con->doCommandAsConsole("say ".$session->get('login')." a achete: ".$nbr." ".$obj." !");
             $con->disconnect();
         }
         else

@@ -179,6 +179,7 @@ class ActionController extends Controller
                         $session->set('id', $user->getId());
                         $session->set('logged', 1);
                         $session->set('name', $user->getFirstname());
+                        $session->set('login', $user->getLogin());
                         $session->set('level', $user->getLevel());
                         $session->setFlash('notice', 'Vous êtes loggé !');
                     }
