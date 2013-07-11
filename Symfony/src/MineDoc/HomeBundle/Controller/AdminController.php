@@ -24,7 +24,7 @@ class AdminController extends Controller
      * @Route("/panel/{pages}/{orderby}/{type}/{more}/{search}", name="panel")
      * @Template()
      */
-    public function panelAction($pages, $orderby, $type, $search, $more)
+    public function panelAction($pages, $orderby, $type, $more, $search)
     {
         $session = $this->getRequest()->getSession();
         $session->set('chatstamp', 0);
