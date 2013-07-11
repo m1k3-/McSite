@@ -45,8 +45,8 @@ class Mc
         $mail_Data .= "\n";
         $mail_Data .= "Bye !\n";
 
-        $headers = 'From: "Doc CoBrA"<noreply.docserver@gmail.com>' . "\n";
-        $headers .= 'Reply-To: noreply.docserver@gmail.com' . "\n";
+        $headers = 'From: "Doc CoBrA"<noreply@docserver.fr>' . "\n";
+        $headers .= 'Reply-To: noreply@docserver.fr' . "\n";
         $headers .= 'Content-Type: text/plain; charset="iso-8859-1"' . "\n";
         $headers .= 'Content-Transfer-Encoding: 8bit';
 
@@ -65,8 +65,8 @@ class Mc
         $mail_Data .= "\n";
         $mail_Data .= "Bon jeu !\n";
 
-        $headers = 'From: "Doc CoBrA"<noreply.docserver@gmail.com>' . "\n";
-        $headers .= 'Reply-To: noreply.docserver@gmail.com' . "\n";
+        $headers = 'From: "Doc CoBrA"<noreply@docserver.fr>' . "\n";
+        $headers .= 'Reply-To: noreply@docserver.fr' . "\n";
         $headers .= 'Content-Type: text/plain; charset="iso-8859-1"' . "\n";
         $headers .= 'Content-Transfer-Encoding: 8bit';
 
@@ -93,8 +93,8 @@ class Mc
         $mail_Data .= "\n";
         $mail_Data .= "Bon jeu !\n";
 
-        $headers = 'From: "Doc CoBrA"<noreply.docserver@gmail.com>' . "\n";
-        $headers .= 'Reply-To: noreply.docserver@gmail.com' . "\n";
+        $headers = 'From: "Doc CoBrA"<noreply@docserver.fr>' . "\n";
+        $headers .= 'Reply-To: noreply@docserver.fr' . "\n";
         $headers .= 'Content-Type: text/plain; charset="iso-8859-1"' . "\n";
         $headers .= 'Content-Transfer-Encoding: 8bit';
 
