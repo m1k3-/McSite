@@ -95,6 +95,10 @@ class ShopController extends Controller
                     $service->sendCommandBuy($item->getName(), $nbr, "give " . $user->getLogin() . " " . $id . " " . $nbr, $session);
                     $session->setFlash('notice', 'Achat effectué !');
                 }
+                elseif ($nbr == 0)
+                {
+                    $session->setFlash('warning', 'Quantité invalide !');
+                }
                 else
                 {
                     $session->setFlash('warning', 'Vous n\'avez pas assez de sous');
