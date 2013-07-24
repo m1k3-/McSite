@@ -74,7 +74,7 @@ class ShopController extends Controller
 
         $user = $this->getDoctrine()->getRepository('MineDocHomeBundle:User')->find($session->get('id'));
 
-        $nbr = ($nbr < 0? 0 : $nbr);
+        $nbr = ($nbr < 0 ? 0 : $nbr);
 
         if ($user != null)
         {
@@ -84,7 +84,7 @@ class ShopController extends Controller
             if ($item != null)
             {
                 $money = $item->getPrice() * $nbr;
-                if ($money_user >= $money)
+                if ($money_user >= $money && nbr != 0)
                 {
                     $user->setMoney($money_user - $money);
                     $item->setCounter($item->getCounter() + $nbr);
