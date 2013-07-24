@@ -8,6 +8,7 @@
     <form method="post" novalidate="novalidate" {{ form_enctype(form) }}>
         <div id="register">
             <div>{{ form_label(form.password, 'Changer mot de passe:') }}{{ form_errors(form.password) }}{{ form_widget(form.password) }}</div>
+            {{ form_widget(form._token) }}
         </div>
         <input type="submit" class="button_blue" value="Valider" />
     </form>
