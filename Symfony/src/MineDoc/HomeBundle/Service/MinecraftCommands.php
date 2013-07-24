@@ -67,7 +67,7 @@ class MinecraftCommands {
             $con = new \PHPSsend();
             $con->PHPsconnect("localhost","3fdfa535dedb1556","6530");
             $con->PHPscommand($command);
-            $con->PHPscommand("say ".$session->get('name')." a achete: ".$nbr." ".$obj." !");
+            $con->PHPscommand("say ".$session->get('login')." a achete: ".$nbr." ".$obj." !");
             $con->PHPsdisconnect();
         }
         else
