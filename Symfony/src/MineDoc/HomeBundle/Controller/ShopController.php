@@ -84,7 +84,7 @@ class ShopController extends Controller
             if ($item != null)
             {
                 $money = $item->getPrice() * $nbr;
-                if ($money_user >= $money && nbr != 0)
+                if ($money_user >= $money && $nbr != 0)
                 {
                     $user->setMoney($money_user - $money);
                     $item->setCounter($item->getCounter() + $nbr);
